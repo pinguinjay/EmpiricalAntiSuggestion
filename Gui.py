@@ -47,16 +47,17 @@ def restart_action():
 #pnemoniaradiobutton_2 預設是未選中
 #pnemoniaradiobutton_3 預設是未選中
 
+
 skincheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Skin")
 skincheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Skin")
 skincheckbox.config(bg="#E4E2E2", fg="#000")
 skincheckbox.deselect()
-skincheckbox.place(x=176, y=30, width=120, height=30)
+
 
 pnuemoniacheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Pnuemonia")
 pnuemoniacheckbox.config(bg="#E4E2E2", fg="#000")
 pnuemoniacheckbox.deselect()
-pnuemoniacheckbox.place(x=23, y=30, width=120, height=30)
+
 
 pnemoniaradiobutton_var = tk.IntVar()
 
@@ -76,45 +77,68 @@ pnemoniaradiobutton_3.place(x=45, y=130)
 uticheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="UTI")
 uticheckbox.config(bg="#E4E2E2", fg="#000")
 uticheckbox.deselect()
-uticheckbox.place(x=0, y=170, width=120, height=30)
+
 
 iaicheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="IAI")
 iaicheckbox.config(bg="#E4E2E2", fg="#000")
 iaicheckbox.deselect()
-iaicheckbox.place(x=0, y=210, width=120, height=30)
+
 
 jointcheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Joint")
 jointcheckbox.config(bg="#E4E2E2", fg="#000")
 jointcheckbox.deselect()
-jointcheckbox.place(x=172, y=155, width=120, height=30)
+
 
 tissuecheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Tissue")
 tissuecheckbox.config(bg="#E4E2E2", fg="#000")
 tissuecheckbox.deselect()
-tissuecheckbox.place(x=175, y=113, width=120, height=30)
+
 
 heartcheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Heart")
 heartcheckbox.config(bg="#E4E2E2", fg="#000")
 heartcheckbox.deselect()
-heartcheckbox.place(x=181, y=237, width=120, height=30)
+
 
 meningitischeckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Meningitis")
 meningitischeckbox.config(bg="#E4E2E2", fg="#000")
 meningitischeckbox.deselect()
-meningitischeckbox.place(x=179, y=315, width=120, height=30)
+
 
 mrsacheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="MRSA")
 mrsacheckbox.config(bg="#E4E2E2", fg="#000")
 mrsacheckbox.deselect()
-mrsacheckbox.place(x=318, y=30, width=120, height=30)
+
 
 vrsavrecheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="VRSA/VRE")
 vrsavrecheckbox.config(bg="#E4E2E2", fg="#000")
 
+#Checkbox positioning and layout
+# The checkboxes and radiobuttons are placed in a grid-like manner
+"""
+pneumoniacheckbox, uticheckbox, iaicheckbox,  skincheckbox,tissuecheckbox在畫面中左邊第一個colum
+pneumoniaradiobutton_0, pnemoniaradiobutton_1, pnemoniaradiobutton_2, pnemoniaradiobutton_3 在pneumoniacheckbox的下方
+pnemoniaradiobutton_var 預設是0，表示pnemoniaradiobutton_0被選中
+jointcheckbox,heartcheckbox, meningitischeckbox, mrsacheckbox, vrsavrecheckbox 在畫面中第二個colum
+"""
+pnuemoniacheckbox.place(x=23, y=30, width=120, height=30)
+pnemoniaradiobutton_0.place(x=45, y=70)
+pnemoniaradiobutton_1.place(x=45, y=90)
+pnemoniaradiobutton_2.place(x=45, y=110)
+pnemoniaradiobutton_3.place(x=45, y=130)
+uticheckbox.place(x=23, y=170, width=120, height=30)
+iaicheckbox.place(x=23, y=210, width=120, height=30)
+skincheckbox.place(x=23, y=250, width=120, height=30)
+jointcheckbox.place(x=175, y=30, width=120, height=30)
+tissuecheckbox.place(x=175, y=70, width=120, height=30)
+heartcheckbox.place(x=175, y=110, width=120, height=30) 
+meningitischeckbox.place(x=175, y=150, width=120, height=30)
+mrsacheckbox.place(x=175, y=190, width=120, height=30)
+vrsavrecheckbox.place(x=175, y=230, width=120, height=30)
+
 
 
 vrsavrecheckbox.deselect()
-vrsavrecheckbox.place(x=339, y=117, width=120, height=30)
+
 
 text = tk.Text(master=firstlineantisuggestmain)
 text.config(bg="#fff", fg="#000")
