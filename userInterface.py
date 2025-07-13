@@ -166,15 +166,14 @@ def get_selected_checkbox():
         return "MRSA"
     elif vrsavrecheckbox_var.get():
         return "VRSA/VRE"
-    elif pnuemoniacheckbox_var.get():
-        if pnemoniaradiobutton_var.get() == 0:
-            return "CAP"
-        elif pnemoniaradiobutton_var.get() == 1:
-            return "HAP"
-        elif pnemoniaradiobutton_var.get() == 2:
-            return "VAP"
-        elif pnemoniaradiobutton_var.get() == 3:
-            return "Children"
+    elif pnuemoniacheckbox_var.get() & pnemoniaradiobutton_var.get() == 0:
+        return "CAP"
+    elif pnuemoniacheckbox_var.get() & pnemoniaradiobutton_var.get() == 1:
+        return "HAP"
+    elif pnuemoniacheckbox_var.get() & pnemoniaradiobutton_var.get() == 2:
+        return "VAP"
+    elif pnuemoniacheckbox_var.get() & pnemoniaradiobutton_var.get() == 3:
+        return "Children"
     else:
         return None
 
