@@ -2,6 +2,8 @@
 
 import os
 import tkinter as tk
+import TextSuggestion as TextSugg
+
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -13,6 +15,14 @@ firstlineantisuggestmain.geometry("718x507")
 startsuggest = tk.Button(master=firstlineantisuggestmain, text="Check")
 startsuggest.config(bg="#dedede", fg="#000")
 startsuggest.place(x=23, y=401, height=40)
+
+#當按下startsuggest按鈕時，會顯示選中的checkbox的建議
+def startsuggest_action():
+    selected_checkbox = get_selected_checkbox()
+    suggestion = TextSugg.SuggestionKey[selected_checkbox]
+    text.delete(1.0, tk.END)  # Clear previous text
+    text.insert(tk.END, suggestion)  # Insert new suggestion
+startsuggest.config(command=startsuggest_action)
 
 restart = tk.Button(master=firstlineantisuggestmain, text="Restart")
 restart.config(bg="#E4E2E2", fg="#000")
@@ -30,6 +40,7 @@ def restart_action():
     mrsacheckbox.deselect()
     vrsavrecheckbox.deselect()
     pnemoniaradiobutton_var.set(0)
+restart.config(command=restart_action)
 
 #skincheckbox 預設是未選中
 #pnuemoniacheckbox 預設是未選中
@@ -48,13 +59,13 @@ def restart_action():
 #pnemoniaradiobutton_3 預設是未選中
 
 
-skincheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Skin")
-skincheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Skin")
+skincheckbox_var = tk.BooleanVar()
+skincheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Skin", variable=skincheckbox_var)
 skincheckbox.config(bg="#E4E2E2", fg="#000")
 skincheckbox.deselect()
 
-
-pnuemoniacheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Pnuemonia")
+pnuemoniacheckbox_var = tk.BooleanVar()
+pnuemoniacheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Pnuemonia", variable=pnuemoniacheckbox_var)
 pnuemoniacheckbox.config(bg="#E4E2E2", fg="#000")
 pnuemoniacheckbox.deselect()
 
@@ -74,44 +85,45 @@ pnemoniaradiobutton_3 = tk.Radiobutton(master=firstlineantisuggestmain, variable
 pnemoniaradiobutton_3.config(bg="#E4E2E2", fg="#000", value=3)
 pnemoniaradiobutton_3.place(x=45, y=130)
 
-uticheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="UTI")
+uticheckbox_var = tk.BooleanVar()
+uticheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="UTI", variable=uticheckbox_var)
 uticheckbox.config(bg="#E4E2E2", fg="#000")
 uticheckbox.deselect()
 
-
-iaicheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="IAI")
+iaicheckbox_var = tk.BooleanVar()
+iaicheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="IAI", variable=iaicheckbox_var)
 iaicheckbox.config(bg="#E4E2E2", fg="#000")
 iaicheckbox.deselect()
 
-
-jointcheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Joint")
+jointcheckbox_var = tk.BooleanVar()
+jointcheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Joint", variable=jointcheckbox_var)
 jointcheckbox.config(bg="#E4E2E2", fg="#000")
 jointcheckbox.deselect()
 
-
-tissuecheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Tissue")
+tissuecheckbox_var = tk.BooleanVar()
+tissuecheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Tissue", variable=tissuecheckbox_var)
 tissuecheckbox.config(bg="#E4E2E2", fg="#000")
 tissuecheckbox.deselect()
 
-
-heartcheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Heart")
+heartcheckbox_var = tk.BooleanVar()
+heartcheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Heart", variable=heartcheckbox_var)
 heartcheckbox.config(bg="#E4E2E2", fg="#000")
 heartcheckbox.deselect()
 
-
-meningitischeckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Meningitis")
+meningitischeckbox_var = tk.BooleanVar()
+meningitischeckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Meningitis", variable=meningitischeckbox_var)
 meningitischeckbox.config(bg="#E4E2E2", fg="#000")
 meningitischeckbox.deselect()
 
-
-mrsacheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="MRSA")
+mrsacheckbox_var = tk.BooleanVar()
+mrsacheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="MRSA", variable=mrsacheckbox_var)
 mrsacheckbox.config(bg="#E4E2E2", fg="#000")
 mrsacheckbox.deselect()
 
-
-vrsavrecheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="VRSA/VRE")
+vrsavrecheckbox_var = tk.BooleanVar()
+vrsavrecheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="VRSA/VRE", variable=vrsavrecheckbox_var)
 vrsavrecheckbox.config(bg="#E4E2E2", fg="#000")
-
+vrsavrecheckbox.deselect()
 #Checkbox positioning and layout
 # The checkboxes and radiobuttons are placed in a grid-like manner
 """
@@ -135,9 +147,40 @@ meningitischeckbox.place(x=175, y=150, width=120, height=30)
 mrsacheckbox.place(x=175, y=190, width=120, height=30)
 vrsavrecheckbox.place(x=175, y=230, width=120, height=30)
 
+def get_selected_checkbox():
+    if skincheckbox_var.get():
+        return "Skin"      
+    elif uticheckbox_var.get():
+        return "UTI"
+    elif iaicheckbox_var.get():
+        return "IAI"
+    elif jointcheckbox_var.get():
+        return "Joint"
+    elif tissuecheckbox_var.get():
+        return "Tissue"
+    elif heartcheckbox_var.get():
+        return "Heart"
+    elif meningitischeckbox_var.get():
+        return "Meningitis"
+    elif mrsacheckbox_var.get():
+        return "MRSA"
+    elif vrsavrecheckbox_var.get():
+        return "VRSA/VRE"
+    elif pnuemoniacheckbox_var.get():
+        if pnemoniaradiobutton_var.get() == 0:
+            return "CAP"
+        elif pnemoniaradiobutton_var.get() == 1:
+            return "HAP"
+        elif pnemoniaradiobutton_var.get() == 2:
+            return "VAP"
+        elif pnemoniaradiobutton_var.get() == 3:
+            return "Children"
+    else:
+        return None
 
 
-vrsavrecheckbox.deselect()
+
+
 
 
 text = tk.Text(master=firstlineantisuggestmain)
