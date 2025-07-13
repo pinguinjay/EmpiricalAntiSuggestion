@@ -13,8 +13,8 @@ firstlineantisuggestmain.config(bg="#E4E2E2")
 firstlineantisuggestmain.geometry("718x507")
 
 startsuggest = tk.Button(master=firstlineantisuggestmain, text="Check")
-startsuggest.config(bg="#dedede", fg="#000")
-startsuggest.place(x=23, y=401, height=40)
+startsuggest.config(bg="#32CD32", fg="#000")
+startsuggest.place(x=25, y=401, height=40)
 
 #當按下startsuggest按鈕時，會顯示選中的checkbox的建議
 def startsuggest_action():
@@ -24,9 +24,9 @@ def startsuggest_action():
     text.insert(tk.END, suggestion)  # Insert new suggestion
 startsuggest.config(command=startsuggest_action)
 
-restart = tk.Button(master=firstlineantisuggestmain, text="Restart")
+restart = tk.Button(master=firstlineantisuggestmain, text="Clear")
 restart.config(bg="#E4E2E2", fg="#000")
-restart.place(x=155, y=401, height=40)
+restart.place(x=100, y=401, height=40)
 #按下restart按鈕時，會清除所有選項
 def restart_action():
     skincheckbox.deselect()
@@ -41,6 +41,14 @@ def restart_action():
     vrsavrecheckbox.deselect()
     pnemoniaradiobutton_var.set(0)
 restart.config(command=restart_action)
+#Button 回報錯誤，當按下reporterror按鈕時，會前往https://github.com/pinguinjay/EmpiricalAntiSuggestion
+reporterror = tk.Button(master=firstlineantisuggestmain, text="Report Error")
+reporterror.config(bg="#DAA520", fg="#000")
+reporterror.place(x=175, y=401, height=40)
+def report_error_action():
+    import webbrowser
+    webbrowser.open("https://github.com/pinguinjay/EmpiricalAntiSuggestion")
+reporterror.config(command=report_error_action)
 
 #skincheckbox 預設是未選中
 #pnuemoniacheckbox 預設是未選中
@@ -60,12 +68,12 @@ restart.config(command=restart_action)
 
 
 skincheckbox_var = tk.BooleanVar()
-skincheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Skin", variable=skincheckbox_var)
+skincheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Skin", variable=skincheckbox_var,anchor='w')
 skincheckbox.config(bg="#E4E2E2", fg="#000")
 skincheckbox.deselect()
 
 pnuemoniacheckbox_var = tk.BooleanVar()
-pnuemoniacheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Pnuemonia", variable=pnuemoniacheckbox_var)
+pnuemoniacheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Pnuemonia", variable=pnuemoniacheckbox_var,anchor='w')
 pnuemoniacheckbox.config(bg="#E4E2E2", fg="#000")
 pnuemoniacheckbox.deselect()
 
@@ -86,42 +94,42 @@ pnemoniaradiobutton_3.config(bg="#E4E2E2", fg="#000", value=3)
 pnemoniaradiobutton_3.place(x=45, y=130)
 
 uticheckbox_var = tk.BooleanVar()
-uticheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="UTI", variable=uticheckbox_var)
+uticheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="UTI", variable=uticheckbox_var, anchor='w')
 uticheckbox.config(bg="#E4E2E2", fg="#000")
 uticheckbox.deselect()
 
 iaicheckbox_var = tk.BooleanVar()
-iaicheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="IAI", variable=iaicheckbox_var)
+iaicheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="IAI", variable=iaicheckbox_var, anchor='w')
 iaicheckbox.config(bg="#E4E2E2", fg="#000")
 iaicheckbox.deselect()
 
 jointcheckbox_var = tk.BooleanVar()
-jointcheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Joint", variable=jointcheckbox_var)
+jointcheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Joint", variable=jointcheckbox_var, anchor='w')
 jointcheckbox.config(bg="#E4E2E2", fg="#000")
 jointcheckbox.deselect()
 
 tissuecheckbox_var = tk.BooleanVar()
-tissuecheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Tissue", variable=tissuecheckbox_var)
+tissuecheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Tissue", variable=tissuecheckbox_var, anchor='w')
 tissuecheckbox.config(bg="#E4E2E2", fg="#000")
 tissuecheckbox.deselect()
 
 heartcheckbox_var = tk.BooleanVar()
-heartcheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Heart", variable=heartcheckbox_var)
+heartcheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Heart", variable=heartcheckbox_var, anchor='w')
 heartcheckbox.config(bg="#E4E2E2", fg="#000")
 heartcheckbox.deselect()
 
 meningitischeckbox_var = tk.BooleanVar()
-meningitischeckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Meningitis", variable=meningitischeckbox_var)
+meningitischeckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="Meningitis", variable=meningitischeckbox_var, anchor='w')
 meningitischeckbox.config(bg="#E4E2E2", fg="#000")
 meningitischeckbox.deselect()
 
 mrsacheckbox_var = tk.BooleanVar()
-mrsacheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="MRSA", variable=mrsacheckbox_var)
+mrsacheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="MRSA", variable=mrsacheckbox_var, anchor='w')
 mrsacheckbox.config(bg="#E4E2E2", fg="#000")
 mrsacheckbox.deselect()
 
 vrsavrecheckbox_var = tk.BooleanVar()
-vrsavrecheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="VRSA/VRE", variable=vrsavrecheckbox_var)
+vrsavrecheckbox = tk.Checkbutton(master=firstlineantisuggestmain, text="VRSA/VRE", variable=vrsavrecheckbox_var, anchor='w')
 vrsavrecheckbox.config(bg="#E4E2E2", fg="#000")
 vrsavrecheckbox.deselect()
 #Checkbox positioning and layout
@@ -132,6 +140,8 @@ pneumoniaradiobutton_0, pnemoniaradiobutton_1, pnemoniaradiobutton_2, pnemoniara
 pnemoniaradiobutton_var 預設是0，表示pnemoniaradiobutton_0被選中
 jointcheckbox,heartcheckbox, meningitischeckbox, mrsacheckbox, vrsavrecheckbox 在畫面中第二個colum
 """
+#checkbox 靠左對齊
+
 pnuemoniacheckbox.place(x=23, y=30, width=120, height=30)
 pnemoniaradiobutton_0.place(x=45, y=70)
 pnemoniaradiobutton_1.place(x=45, y=90)
